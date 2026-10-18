@@ -1,0 +1,51 @@
+# Python bytecode and caches
+*.py[cod]
+**/__pycache__/
+
+# Native extensions and packaging outputs
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+bin/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib64/
+
+# Local environments and secrets
+.venv/
+config/apikey*
+
+# Logs, test, and notebook artifacts
+*.log
+pip-log.txt
+.coverage
+.tox/
+nosetests.xml
+.pytest_cache/
+.ipynb_checkpoints/
+*.mo
+
+# Project-tool metadata
+.mr.developer.cfg
+.project
+.pydevproject
+
+# macOS and editor files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+.*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
