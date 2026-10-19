@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Analyst response",
+  "type": "object",
+  "required": ["score", "confidence", "findings", "sources", "risks"],
+  "properties": {
+    "score": {"type": "number", "minimum": -2, "maximum": 2},
+    "confidence": {"enum": ["low", "medium", "high"]},
+    "findings": {"type": "array", "items": {"type": "string"}},
+    "sources": {"type": "array", "items": {"type": "string"}},
+    "risks": {"type": "array", "items": {"type": "string"}}
+  }
+}

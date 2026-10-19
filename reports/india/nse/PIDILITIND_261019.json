@@ -1,0 +1,14 @@
+{
+  "ticker": "PIDILITIND",
+  "country": "india",
+  "exchange": "nse",
+  "as_of": "2026-10-19",
+  "price_as_of": "2026-10-19",
+  "reference_price": 1483.0,
+  "horizon": "4-8 weeks",
+  "score": 0.3,
+  "score_scale": "-2_to_+2",
+  "stance": "constructive_conditional_buy",
+  "confidence": "medium",
+  "output_file": "PIDILITIND_261019.html"
+}

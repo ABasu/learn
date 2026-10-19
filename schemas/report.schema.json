@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Generated report",
+  "type": "object",
+  "required": ["ticker", "country", "exchange", "as_of", "output_file", "score", "stance", "confidence", "reference_price", "horizon"],
+  "properties": {
+    "ticker": {"type": "string"},
+    "country": {"enum": ["us", "india"]},
+    "exchange": {"enum": ["nasdaq", "nyse", "nse", "bse"]},
+    "as_of": {"type": "string", "format": "date"},
+    "score": {"type": "number", "minimum": -2, "maximum": 2},
+    "score_scale": {"const": "-2_to_+2"},
+    "stance": {"type": "string"},
+    "confidence": {"enum": ["low", "medium", "high"]},
+    "reference_price": {"type": "number", "exclusiveMinimum": 0},
+    "price_as_of": {"type": "string", "format": "date"},
+    "horizon": {"type": "string"},
+    "output_file": {
+      "type": "string",
+      "pattern": "^[A-Z0-9._-]+_[0-9]{6}\\.html$"
+    }
+  }
+}

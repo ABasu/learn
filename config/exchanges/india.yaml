@@ -1,0 +1,15 @@
+country: india
+currency: INR
+numeric_convention: indian
+numeric_units:
+  small: rupees
+  medium: lakh
+  large: crore
+report_template: report_templates/investment_report.html
+trade_template: report_templates/exchanges/india/trade_recommendation.md
+common_prompt: prompts/exchanges/india/common.md
+exchanges:
+  nse:
+    prompt: prompts/exchanges/india/nse.md
+  bse:
+    prompt: prompts/exchanges/india/bse.md

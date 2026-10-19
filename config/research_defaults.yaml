@@ -1,0 +1,8 @@
+analysis_horizons:
+  technicals: 4-8w
+  fundamentals: 1y
+
+override_rule: >
+  A report request may override an agent's default horizon. When it does, the
+  report must display both the requested horizon and any agent-specific
+  horizon that differs from it.

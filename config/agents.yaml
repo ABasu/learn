@@ -1,0 +1,19 @@
+agents:
+  - id: fundamentals
+    prompt: prompts/shared/fundamentals.md
+    default_horizon: 1y
+  - id: technicals
+    prompt: prompts/shared/technicals.md
+    default_horizon: 4-8w
+  - id: valuation
+    prompt: prompts/shared/valuation.md
+  - id: catalysts
+    prompt: prompts/shared/catalysts.md
+  - id: risks
+    prompt: prompts/shared/risks.md
+  - id: adjudicator
+    prompt: prompts/shared/adjudicator.md
+  - id: bull_adjudicator
+    prompt: prompts/shared/bull_adjudicator.md
+  - id: bear_adjudicator
+    prompt: prompts/shared/bear_adjudicator.md

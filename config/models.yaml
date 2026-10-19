@@ -1,0 +1,4 @@
+defaults:
+  analyst_model: null
+  adjudicator_model: null
+  temperature: 0.2

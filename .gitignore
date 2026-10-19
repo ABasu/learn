@@ -49,3 +49,12 @@ Icon
 Session.vim
 .netrwhist
 *~
+
+# Generated research artifacts
+runtime/**
+reports/**/*.html
+
+# Preserve generated-output directory structure
+!runtime/**/
+!runtime/**/.gitkeep
+!reports/**/.gitkeep

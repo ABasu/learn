@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{company_name}} ({{ticker}}) — Investment Report</title>
+  <script src="https://unpkg.com/lightweight-charts@5.0.9/dist/lightweight-charts.standalone.production.js"></script>
+  <style>
+    :root { --ink:#edf3fb; --muted:#9daec4; --paper:#09111f; --card:#111d2e; --card-2:#14243a; --line:#2a3a53; --navy:#163763; --teal:#187b7a; --green:#3ac695; --red:#ff7a7f; --amber:#ffb454; }
+    * { box-sizing:border-box; } body { margin:0; background:radial-gradient(circle at 20% 0,#142944 0,var(--paper) 38%); color:var(--ink); font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    .page { max-width:1360px; margin:auto; padding:28px; } .hero { position:relative; border-radius:18px; padding:32px; background:linear-gradient(135deg,#102b4e,#176866); color:white; box-shadow:0 16px 45px #0006; } .score-tag { position:absolute; top:24px; right:24px; min-width:132px; padding:10px 14px; border:1px solid #ffffff38; border-radius:12px; background:#08111fc7; text-align:center; box-shadow:0 8px 24px #0004; } .score-tag small { display:block; color:#cfe0ee; letter-spacing:.08em; text-transform:uppercase; } .score-tag strong { display:block; color:var(--amber); font-size:27px; line-height:1.2; }
+    .eyebrow { opacity:.78; letter-spacing:.12em; text-transform:uppercase; font-size:12px; } h1 { font-size:38px; margin:6px 0; } h2 { margin:0 0 14px; font-size:24px; } h3 { margin:18px 0 8px; font-size:17px; }
+    .meta,.grid,.metrics,.specialists { display:grid; gap:16px; } .meta { grid-template-columns:repeat(4,1fr); margin-top:24px; } .meta div { background:#ffffff12; border:1px solid #ffffff2b; border-radius:12px; padding:12px; } .meta small { display:block; color:#d1e1eb; } .meta strong { font-size:17px; }
+    section { margin-top:24px; } .grid { grid-template-columns:1fr 1fr; } .card { background:linear-gradient(145deg,var(--card),#0e1929); border:1px solid var(--line); border-radius:16px; padding:24px; box-shadow:0 8px 28px #0003; } .wide { padding:0; overflow:hidden; }
+    .decision { display:grid; grid-template-columns:1.2fr .8fr; gap:16px; } .decision .card:first-child { border-left:4px solid var(--amber); } .score { color:var(--amber); font-size:38px; line-height:1; font-weight:800; } .chip { display:inline-block; padding:3px 10px; border-radius:999px; background:#12334b; color:#7ce0dc; font-size:12px; font-weight:700; }
+    .section-break { margin:38px 0 0; padding:13px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); color:var(--muted); letter-spacing:.11em; text-transform:uppercase; font-size:12px; } .chart-head { padding:22px 24px 0; display:flex; justify-content:space-between; gap:16px; align-items:flex-start; } #price-chart { width:100%; height:620px; } #rsi-chart { width:100%; height:150px; border-top:1px solid var(--line); } .chart-notes { margin:0; padding:16px 24px 20px 42px; columns:3; color:var(--muted); font-size:13px; }
+    .metrics { grid-template-columns:repeat(4,1fr); } .metric,.specialist { border-radius:12px; background:#0c1727; border:1px solid #21334e; padding:15px; } .metric small,.specialist small { display:block; color:var(--muted); } .metric strong { font-size:22px; } .specialists { grid-template-columns:repeat(5,1fr); } .specialist b { display:block; color:var(--green); font-size:20px; margin-top:4px; } .specialist.risk b,.specialist.tech b { color:var(--red); } table { width:100%; border-collapse:collapse; } th,td { text-align:left; padding:10px; border-bottom:1px solid var(--line); vertical-align:top; } th { color:var(--muted); font-size:12px; letter-spacing:.04em; text-transform:uppercase; } .viz { min-height:160px; border:1px solid #28415d; border-radius:12px; padding:16px; background:#0c1727; } .fine { color:var(--muted); font-size:12px; } a { color:#73d6ff; } ul { padding-left:20px; } .sources li { margin:8px 0; }
+    @media(max-width:800px) { .meta,.metrics,.grid,.decision,.specialists { grid-template-columns:1fr 1fr; } #price-chart { height:480px; } .chart-notes { columns:1; } } @media(max-width:520px) { .page { padding:14px; } .meta,.metrics,.grid,.decision,.specialists { grid-template-columns:1fr; } h1 { font-size:30px; } #price-chart { height:400px; } } @media print { body { background:white; color:#162235; } .page { max-width:none; } .card,.hero { box-shadow:none; break-inside:avoid; } }
+  </style>
+</head>
+<body>
+<main class="page">
+  <header class="hero">
+    <div class="score-tag" data-analysis-score="{{adjudicator_score}}"><small>Analysis score</small><strong>{{adjudicator_score}} / +2</strong><small>{{stance}}</small></div>
+    <div class="eyebrow">{{exchange}} · {{as_of}} · {{investment_horizon}} · {{risk_profile}} risk</div>
+    <h1>{{company_name}} <span style="opacity:.66">{{ticker}}</span></h1>
+    <p>{{executive_summary}}</p>
+    <div class="meta">
+      <div><small>Reference price</small><strong>{{reference_price}}</strong><small>{{price_as_of}}</small></div>
+      <div><small>Market valuation</small><strong>{{market_valuation}}</strong><small>{{valuation_as_of}}</small></div>
+      <div><small>Report stance</small><strong>{{stance}}</strong><small>{{confidence}} confidence</small></div>
+      <div><small>Next key date</small><strong>{{next_key_date}}</strong><small>{{next_key_date_label}}</small></div>
+    </div>
+  </header>
+
+  <section class="decision">
+    <article class="card"><span class="chip">Executive view</span><h2>{{stance}}</h2><p>{{executive_summary}}</p></article>
+    <aside><article class="card"><h2>Adjudicator score</h2><div class="score">{{adjudicator_score}}</div><p>{{adjudicator_rationale}}</p><p class="fine">{{adjudicator_weights}}</p></article><article class="card" style="margin-top:16px"><h2>Specialist scorecard</h2><div class="specialists"><div class="specialist"><small>Fundamentals</small><b>{{fundamentals_score}}</b></div><div class="specialist"><small>Valuation</small><b>{{valuation_score}}</b></div><div class="specialist tech"><small>Technicals</small><b>{{technicals_score}}</b></div><div class="specialist"><small>Catalysts</small><b>{{catalysts_score}}</b></div><div class="specialist risk"><small>Risks</small><b>{{risks_score}}</b></div></div></article></aside>
+  </section>
+  <section class="grid"><article class="card"><h2>Company profile</h2><h3>What it does</h3><p>{{company_description}}</p><h3>Market position / group</h3><p>{{market_position}} {{group_affiliation}}</p><h3>Why it matters now</h3><p>{{why_now}}</p></article><aside class="card"><h2>Industry overview</h2>{{industry_overview}}</aside></section>
+
+  <section class="grid"><article class="card wide">
+    <div class="chart-head"><div><h2>Price history <span class="fine">· one year</span></h2><p class="fine">Daily candles, volume and EMA overlays show market structure; levels and markers map directly to the argument below.</p></div><div class="fine">{{numeric_convention_label}}</div></div>
+    <div id="price-chart" aria-label="Annotated OHLCV price chart"></div>
+    <ul id="chart-notes" class="chart-notes"></ul>
+  </article><aside class="card"><h2>Technicals</h2>{{technicals}}<p class="fine">Entry, invalidation, targets, support/resistance, EMA context and dated markers are mapped in the chart. Use daily closes for confirmation.</p></aside></section>
+
+  <section class="grid"><article class="card"><h2>Fundamentals</h2>{{fundamentals}}<h3>Small-multiple trend view</h3><div class="viz">{{fundamentals_visualization}}</div></article><aside class="card"><h2>Fundamental trajectory</h2>{{fundamental_trajectory}}<h3>Peer comparison</h3>{{peer_comparison}}</aside></section>
+  <section class="grid"><article class="card"><h2>Valuation</h2>{{valuation}}</article><article class="card"><h2>Risks</h2>{{risks}}</article></section>
+  <section class="card"><h2>Catalysts</h2>{{catalysts}}</section>
+  <section class="card"><h2>Sector and peer companies</h2>{{sector_and_peers}}</section>
+  <section class="grid"><article class="card"><h2>Bull case</h2>{{bull_case}}</article><article class="card"><h2>Bear case</h2>{{bear_case}}</article></section>
+  <div class="section-break">Sources and limitations</div>
+  <section class="card"><h2>Sources</h2><ol class="sources">{{sources}}</ol><p class="fine">{{limitations}}</p></section>
+</main>
+
+<script id="analysis-metadata" type="application/json">{{analysis_metadata_json}}</script>
+
+<script>
+  // The renderer inserts validated JSON. It contains OHLCV candles, SMA/EMA and RSI
+  // series, price levels, dated event markers, and a compact explanatory note for each.
+  const reportChart = {{chart_data_json}};
+  const { createChart, CandlestickSeries, HistogramSeries, LineSeries, createSeriesMarkers, LineStyle } = LightweightCharts;
+  const common = { layout:{ background:{ color:'#111d2e' }, textColor:'#b5c5da' }, grid:{ vertLines:{ color:'#20314a' }, horzLines:{ color:'#20314a' } }, rightPriceScale:{ borderColor:'#2a3a53' }, timeScale:{ borderColor:'#2a3a53', timeVisible:false } };
+  const priceChart = createChart(document.getElementById('price-chart'), { ...common, width:document.getElementById('price-chart').clientWidth, height:document.getElementById('price-chart').clientHeight, crosshair:{ mode:0 } });
+  const candles = priceChart.addSeries(CandlestickSeries, { upColor:'#16804b', downColor:'#c03b3b', borderVisible:false, wickUpColor:'#16804b', wickDownColor:'#c03b3b' });
+  candles.setData(reportChart.candles);
+  const volume = priceChart.addSeries(HistogramSeries, { priceFormat:{ type:'volume' }, priceScaleId:'volume', lastValueVisible:false, priceLineVisible:false });
+  volume.setData(reportChart.volume); volume.priceScale().applyOptions({ scaleMargins:{ top:.78, bottom:0.02 } });
+  for (const indicator of reportChart.indicators) { const line = priceChart.addSeries(LineSeries, { color:indicator.color, lineWidth:2, lastValueVisible:false, priceLineVisible:false, title:indicator.name }); line.setData(indicator.data); }
+  for (const level of reportChart.levels) { candles.createPriceLine({ price:level.price, color:level.color, lineWidth:1, lineStyle:LineStyle.Dashed, axisLabelVisible:true, title:level.label }); }
+  createSeriesMarkers(candles, reportChart.markers); priceChart.timeScale().fitContent();
+  document.getElementById('chart-notes').innerHTML = reportChart.notes.map(note => `<li><strong>${note.label}:</strong> ${note.text}</li>`).join('');
+  new ResizeObserver(([entry]) => { priceChart.applyOptions({ width:entry.contentRect.width }); }).observe(document.getElementById('price-chart'));
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+weights:
+  fundamentals: 0.30
+  valuation: 0.25
+  technicals: 0.20
+  catalysts: 0.15
+  risks: 0.10
+
+score_range:
+  minimum: -2
+  maximum: 2
+
+score_bands:
+  bullish: [1.0, 2.0]
+  constructive: [0.25, 0.99]
+  neutral: [-0.24, 0.24]
+  cautious: [-0.99, -0.25]
+  bearish: [-2.0, -1.0]

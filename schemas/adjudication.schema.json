@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Adjudication",
+  "type": "object",
+  "required": ["stance", "weighted_score", "confidence", "rationale"],
+  "properties": {
+    "stance": {"enum": ["bullish", "neutral", "bearish"]},
+    "weighted_score": {"type": "number", "minimum": -2, "maximum": 2},
+    "confidence": {"enum": ["low", "medium", "high"]},
+    "rationale": {"type": "string"},
+    "risk_override": {"type": ["string", "null"]}
+  }
+}
