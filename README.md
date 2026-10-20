@@ -7,7 +7,7 @@
 | |___ | |___ / ___ \|  _ <| |\  |
 |_____||_____/_/   \_\_| \_\_| \_|
 
-     LLM Equity Research & Analysis Node
+     LLM Equity Analysis & Research Node
 ```
 
 LEARN is a reusable command-line workspace for producing structured, auditable equity-research reports. Give it one or more stock tickers, an exchange, and an LLM connection; it coordinates specialist research agents, weighs bullish and bearish arguments, and writes a dark-themed HTML report plus machine-readable JSON.
