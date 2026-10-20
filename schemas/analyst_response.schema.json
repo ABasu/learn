@@ -2,12 +2,18 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Analyst response",
   "type": "object",
-  "required": ["score", "confidence", "findings", "sources", "risks"],
+  "additionalProperties": false,
+  "required": ["score", "confidence", "findings", "evidence", "sources", "bull_scenario", "bear_scenario", "risks", "missing_data", "invalidation"],
   "properties": {
     "score": {"type": "number", "minimum": -2, "maximum": 2},
     "confidence": {"enum": ["low", "medium", "high"]},
-    "findings": {"type": "array", "items": {"type": "string"}},
+    "findings": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "evidence": {"type": "array", "items": {"type": "string"}},
     "sources": {"type": "array", "items": {"type": "string"}},
-    "risks": {"type": "array", "items": {"type": "string"}}
+    "bull_scenario": {"type": "string"},
+    "bear_scenario": {"type": "string"},
+    "risks": {"type": "array", "items": {"type": "string"}},
+    "missing_data": {"type": "array", "items": {"type": "string"}},
+    "invalidation": {"type": "array", "items": {"type": "string"}}
   }
 }

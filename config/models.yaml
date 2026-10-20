@@ -1,4 +1,78 @@
 defaults:
-  analyst_model: null
-  adjudicator_model: null
-  temperature: 0.2
+  model: gpt-5.6-terra
+  reasoning_effort: low
+
+provider_defaults:
+  chatgpt: gpt-5.6-terra
+  chatgpt_api: gpt-5.6-terra
+  claude: sonnet
+  claude_api: claude-sonnet-5-5
+  gemini: pro
+  gemini_api: gemini-2.5-pro
+  antigravity: gemini-3.8-flash-medium
+
+available_models:
+  - gemma4:31b:cloud
+  - glm-5.3-flash:cloud
+  - glm-5.3:cloud
+  - deepseek-v4.1-flash:cloud
+  - gemma4:31b-cloud
+  - gemma4:26b
+  - gpt-6.1-sol
+  - gpt-6-astra
+  - gpt-6-sol
+  - gpt-6-luna
+  - gpt-5.6-sol
+  - gpt-5.6-terra
+  - gpt-5.6-luna
+
+provider_models:
+  chatgpt:
+    - gemma4:31b:cloud
+    - glm-5.3-flash:cloud
+    - glm-5.3:cloud
+    - deepseek-v4.1-flash:cloud
+    - gemma4:31b-cloud
+    - gemma4:26b
+    - gpt-6.1-sol
+    - gpt-6-astra
+    - gpt-6-sol
+    - gpt-6-luna
+    - gpt-5.6-sol
+    - gpt-5.6-terra
+    - gpt-5.6-luna
+  chatgpt_api:
+    - gpt-6.1-sol
+    - gpt-6-astra
+    - gpt-6-sol
+    - gpt-6-luna
+    - gpt-5.6-sol
+    - gpt-5.6-terra
+    - gpt-5.6-luna
+  claude:
+    - sonnet
+    - opus
+    - haiku
+    - fable
+  claude_api:
+    - claude-sonnet-5-5
+    - claude-opus-5-5
+    - claude-haiku-5-5
+    - claude-fable-5-1
+  gemini:
+    - auto
+    - pro
+    - flash
+    - flash-lite
+  gemini_api:
+    - gemini-3.1-pro-preview
+    - gemini-2.5-pro
+    - gemini-2.5-flash
+    - gemini-2.5-flash-lite
+  antigravity:
+    - gemini-3.8-flash-high
+    - gemini-3.8-flash-medium
+    - gemini-3.8-flash-low
+    - claude-sonnet-4-6
+    - claude-opus-4-6-thinking
+    - gpt-oss-120b-medium

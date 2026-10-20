@@ -2,12 +2,53 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Adjudication",
   "type": "object",
-  "required": ["stance", "weighted_score", "confidence", "rationale"],
+  "additionalProperties": false,
+  "required": ["company_name", "stance", "weighted_score", "confidence", "specialist_scores", "rationale", "executive_summary", "company_profile", "industry_overview", "technicals", "fundamentals", "valuation", "risks", "catalysts", "sector_and_peers", "bull_case", "bear_case", "reference_price", "price_as_of", "market_valuation", "next_key_date", "sources", "limitations"],
   "properties": {
+    "company_name": {"type": "string"},
     "stance": {"enum": ["bullish", "neutral", "bearish"]},
     "weighted_score": {"type": "number", "minimum": -2, "maximum": 2},
     "confidence": {"enum": ["low", "medium", "high"]},
+    "specialist_scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fundamentals", "valuation", "technicals", "catalysts", "risks"],
+      "properties": {
+        "fundamentals": {"$ref": "#/$defs/componentScore"},
+        "valuation": {"$ref": "#/$defs/componentScore"},
+        "technicals": {"$ref": "#/$defs/componentScore"},
+        "catalysts": {"$ref": "#/$defs/componentScore"},
+        "risks": {"$ref": "#/$defs/componentScore"}
+      }
+    },
     "rationale": {"type": "string"},
-    "risk_override": {"type": ["string", "null"]}
+    "executive_summary": {"type": "string"},
+    "company_profile": {"type": "string"},
+    "industry_overview": {"type": "string"},
+    "technicals": {"type": "string"},
+    "fundamentals": {"type": "string"},
+    "valuation": {"type": "string"},
+    "risks": {"type": "string"},
+    "catalysts": {"type": "string"},
+    "sector_and_peers": {"type": "string"},
+    "bull_case": {"type": "string"},
+    "bear_case": {"type": "string"},
+    "reference_price": {"type": ["number", "string"]},
+    "price_as_of": {"type": "string"},
+    "market_valuation": {"type": "string"},
+    "next_key_date": {"type": "string"},
+    "sources": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "componentScore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "confidence"],
+      "properties": {
+        "score": {"type": "number", "minimum": -2, "maximum": 2},
+        "confidence": {"enum": ["low", "medium", "high"]}
+      }
+    }
   }
 }

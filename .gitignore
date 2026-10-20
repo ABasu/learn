@@ -53,6 +53,7 @@ Session.vim
 # Generated research artifacts
 runtime/**
 reports/**/*.html
+reports/**/*.json
 
 # Preserve generated-output directory structure
 !runtime/**/
